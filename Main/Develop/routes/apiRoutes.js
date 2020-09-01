@@ -32,7 +32,22 @@ module.exports = function (app) {
 
   //** Called from the index.js file this will delete the given object that the user clicked the delete button from. */
   app.delete("/api/notes/:id", function (req, res) {
-    let id = req.params;
-    console.log(id);
+    let Listid = req.params;
+    console.log(Listid.id);
+
+    fs.readFile("./db/db.json", (err, data) => {
+      if (err) throw err;
+      let db = JSON.parse(data);
+      for (let i = 0; i < db.length; i++) {
+        db[i].id === Listid.id ? db.splice(i, 1) : console.log("");
+      }
+
+      fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
+        if (err) throw err;
+
+        console.log("Item deleted ... Database updated");
+        res.json(db);
+      });
+    });
   });
 };

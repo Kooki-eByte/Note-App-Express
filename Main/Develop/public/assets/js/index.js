@@ -55,7 +55,7 @@ const handleNoteSave = function () {
   const newNote = {
     title: $noteTitle.val(),
     text: $noteText.val(),
-    id: $noteList.length,
+    id: uuidv4(),
   };
 
   saveNote(newNote).then(() => {
