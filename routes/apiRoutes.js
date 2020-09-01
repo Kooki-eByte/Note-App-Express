@@ -1,6 +1,7 @@
 const fs = require("fs");
 
 module.exports = function (app) {
+
   //** This will grab the /api/notes GET request from index.js. This function reads the JSON file and sends it back to the index.js*/
   app.get("/api/notes", function (req, res) {
     fs.readFile("./db/db.json", (err, data) => {
@@ -29,6 +30,7 @@ module.exports = function (app) {
   });
 
   //** Called from the index.js file this will delete the given object that the user clicked the delete button from. */
+
   app.delete("/api/notes/:id", function (req, res) {
     let Listid = req.params;
 
@@ -48,3 +50,4 @@ module.exports = function (app) {
     });
   });
 };
+
