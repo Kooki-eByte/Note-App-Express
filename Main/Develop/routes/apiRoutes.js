@@ -32,5 +32,10 @@ module.exports = function (app) {
   });
 
   //** Called from the index.js file this will delete the given object that the user clicked the delete button from. */
-  app.delete("/api/notes/:id", function (req, res) {});
+
+  app.delete("/api/notes/:id", function (req, res) {
+    let id = req.params;
+    console.log(id);
+  });
+};
 
