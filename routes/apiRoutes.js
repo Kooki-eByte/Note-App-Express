@@ -6,7 +6,6 @@ module.exports = function (app) {
     fs.readFile("./db/db.json", (err, data) => {
       if (err) throw err;
       let db = JSON.parse(data);
-      console.log(db);
       res.json(db);
     });
   });
@@ -19,7 +18,6 @@ module.exports = function (app) {
       if (err) throw err;
       let db = JSON.parse(data);
       db.push(note);
-      console.log(db);
 
       fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
         if (err) throw err;
@@ -33,7 +31,6 @@ module.exports = function (app) {
   //** Called from the index.js file this will delete the given object that the user clicked the delete button from. */
   app.delete("/api/notes/:id", function (req, res) {
     let Listid = req.params;
-    console.log(Listid.id);
 
     fs.readFile("./db/db.json", (err, data) => {
       if (err) throw err;
